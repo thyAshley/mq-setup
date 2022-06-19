@@ -1,0 +1,20 @@
+{
+  "name": "rabbit-mq-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon --exec",
+    "start:direct-receiver": "npm start 'ts-node ./direct-exchange/receive.ts' --watch './direct-exchange/receive.ts' --ext 'ts'",
+    "start:direct-sender": "npm start 'ts-node ./direct-exchange/send.ts' --watch './direct-exchange/send.ts' --ext 'ts'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.0"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.8.2"
+  }
+}
