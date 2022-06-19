@@ -30,3 +30,12 @@ producer/publisher ==(routing key)==> exchange ==(rules/binding)==> queues =>> c
 
 ## Header Exchanges
 - similar to direct exchange but ignore routing key.
+
+#
+
+## Task Queues
+- avoid doing time consuming task
+
+[Service A] <-> [Queue] <-> [Service B]
+
+<!-- if no ack, item will be lost from the queue, we should always manually set acknowledgement when we are done -->
