@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "npx nodemon --exec",
-    "start:direct-receiver": "npm start 'ts-node ./direct-exchange/receive.ts' -watch './direct-exchange/receive.ts' -ext 'ts'",
-    "start:direct-sender": "npm start 'ts-node ./direct-exchange/send.ts' -watch './direct-exchange/send.ts' -ext 'ts'",
-    "start:wq-receiver": "npm start 'ts-node ./work-queues/receive.ts' -watch './work-queues/receive.ts' -ext 'ts'",
-    "start:wq-sender": "npm start 'ts-node ./work-queues/send.ts' -watch './work-queues/send.ts' -ext 'ts'"
+    "start:direct-receiver": "npm start 'ts-node ./direct-exchange/receive.ts'",
+    "start:direct-sender": "npm start 'ts-node ./direct-exchange/send.ts'",
+    "start:wq-receiver": "npm start 'ts-node ./work-queues/receive.ts'",
+    "start:wq-sender": "npm start 'ts-node ./work-queues/send.ts'",
+    "start:fo-receiver": "npm start 'ts-node ./fan-out/receive.ts'",
+    "start:fo-sender": "npm start 'ts-node ./fan-out/send.ts'"
   },
   "keywords": [],
   "author": "",

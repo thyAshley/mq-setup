@@ -1,7 +1,7 @@
 import { connection } from '../connection';
 
-const queueName = 'work-queue';
-const msg = 'Work Queue....'
+const exchangeName = 'fanout-exchange';
+const msg = process.argv.slice(2).join(' ') || 'fanout message'
 
 const sendMsgToMQ = async () => {
     const mqConnection = await connection();
@@ -10,13 +10,10 @@ const sendMsgToMQ = async () => {
     
     // create a queue if there is no queue, otherwise ignore.
     // durable: if false it will not create the queue again during a restart
-    console.log('creating queue', queueName)
-    await producer.assertQueue(queueName, { durable: true});
+    console.log('creating queue', exchangeName)
+    await producer.assertExchange(exchangeName, 'fanout', {durable: false})
 
-    for (let i = 0; i < 5; i++) {
-
-        producer.sendToQueue(queueName, Buffer.from(`${msg} ${i}`), {persistent: true})
-    }
+    producer.publish(exchangeName, "", Buffer.from(msg))
 }
 
 sendMsgToMQ();

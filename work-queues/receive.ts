@@ -4,17 +4,11 @@ import {connection} from '../connection';
 const queueName = 'work-queue';
 
 const baseConsumer = (consumer: Channel) => {
-    consumer.prefetch(5)
     consumer.consume(queueName, (msg => {
         if (msg) {
-            const secs = msg.content.toString().split('.').length - 1;
             console.log("[RabbitMQ] Received", msg.content.toString())
-            setTimeout(() => {
-                // console.log("Done with long waiting service")
-                consumer.ack(msg)
-            }, secs * 1000)
         }
-    }))
+    }), {noAck: true})
 }
 const getMsgFromMQ = async () => {
     const mqConnection = await connection();
